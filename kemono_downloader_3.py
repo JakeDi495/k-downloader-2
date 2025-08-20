@@ -49,13 +49,6 @@ link_list = []
 
 for a in range(0, post_count*50+1, 50):
 
-    user = fake_useragent.UserAgent().random
-
-    #options
-    options = webdriver.ChromeOptions()
-    options.add_argument(f"user-agent={user}")
-    browser = webdriver.Chrome(options=options)
-
     if a == 0:
         a_mod = ""
     else:
@@ -64,6 +57,7 @@ for a in range(0, post_count*50+1, 50):
     print(f"{link}{a_mod}")
 
     #open link
+    browser = webdriver.Chrome(options=options)
     browser.get(f"{link}{a_mod}")
     time.sleep(2)
 
@@ -80,7 +74,21 @@ for a in range(0, post_count*50+1, 50):
 
     browser.close()
 
-time.sleep(15)
+
+
+
+
+post_link = link_list[0]
+
+browser = webdriver.Chrome(options=options)
+browser.get(post_link)
+time.sleep(2)
+
+file_link = browser.find_element(By.CLASS_NAME, "fileThumb")
+file_href = file_link.get_attribute('href')
+print(file_href)
+
+time.sleep(2)
 
 
 
