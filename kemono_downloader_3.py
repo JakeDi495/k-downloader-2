@@ -75,17 +75,26 @@ for an in range(0, post_count*50+1, 50):
 file_link_list = []
 
 
+
 for b in range(len(link_list)):
     browser.get(link_list[b])
     time.sleep(2)
 
+    #find file's links
     file_link = browser.find_elements(By.CLASS_NAME, "fileThumb")
     for c in range(len(file_link)):
         file_href = file_link[c].get_attribute('href')
+
+        #eliminate duplicates
         if file_link_list.count(file_href) > 0:
             continue
 
         file_link_list.append(file_href)
+
+        file_link_list_file = open("file_link_list.txt", "w")
+        file_link_list_file.write(",".join(file_link_list))
+        file_link_list_file.close
+
         print(len(file_link_list), file_href)
 
 
