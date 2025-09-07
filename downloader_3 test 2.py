@@ -14,12 +14,17 @@ from selenium.webdriver.common.by import By
 
 
 
-file_link_list_file = open("file_link_list.txt", "r")
+# file_link_list_file = open("file_link_list.txt", "r")
 
-file_list = file_link_list_file.read()
-file_list = file_list.split(",")
+# file_list = file_link_list_file.read()
+# file_list = file_list.split(",")
 
-for aa in file_list:
-    print(file_list.index(aa)+1, aa)
+# for aa in file_list:
+#     print(file_list.index(aa)+1, aa)
 
-file_link_list_file.close
+# file_link_list_file.close
+
+
+
+lane = int(input())
+print(lane)
