@@ -19,7 +19,7 @@ from selenium.webdriver.common.by import By
 def get_file_link(link):
 
     #main link
-    link = "https://kemono.cr/patreon/user/71053882"
+    # link = "https://kemono.cr/patreon/user/15773096"
 
 
     #count post number
