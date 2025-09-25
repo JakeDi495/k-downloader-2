@@ -36,10 +36,10 @@ time.sleep(2)
 
 
 try:
-    #page count
-    post_count = browser.find_element(By.CLASS_NAME, "site-section--")
+    #error checking
+    error_checking = browser.find_element(By.CLASS_NAME, "site-section--")
         
-    if post_count.text.count("Reason: 404") > 0:
+    if error_checking.text.count("Reason: 404") > 0:
         print("Yea"*100)
 
 except selenium.common.exceptions.NoSuchElementException:

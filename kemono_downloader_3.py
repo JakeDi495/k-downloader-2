@@ -7,6 +7,7 @@ from urllib import response
 import requests
 from bs4 import BeautifulSoup
 import fake_useragent
+import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -19,7 +20,8 @@ from selenium.webdriver.common.by import By
 def get_file_link(link):
 
     #main link
-    # link = "https://kemono.cr/patreon/user/15773096"
+    # link = "https://kemono.cr/patreon/user/15773096"  fascinationuniformed
+    # https://kemono.cr/patreon/user/14691210   BeingObscene
 
 
     #count post number
@@ -77,12 +79,24 @@ def get_file_link(link):
 
     #create list file's links outside cycles
     file_link_list = []
-
-
+    
 
     for b in range(len(link_list)):
         browser.get(link_list[b])
         time.sleep(2)
+
+        #error checking
+        try:
+            error_checking = browser.find_element(By.CLASS_NAME, "site-section--")
+        
+            if error_checking.text.count("Reason: 404") > 0:
+                print("Bad"*10)
+                link_list.append(link_list[b])
+
+        except selenium.common.exceptions.NoSuchElementException:
+            print("Ok")
+
+
 
         #find file's links
         file_link = browser.find_elements(By.CLASS_NAME, "fileThumb")
@@ -103,6 +117,8 @@ def get_file_link(link):
 
 
         time.sleep(2)
+
+    # for c in range(len(error_link_list)):
 
 
 
